@@ -100,7 +100,7 @@ fn main() {
     let video_subsystem = sdl_context.video().unwrap();
 
     const WIDTH: u32 = 1024;
-    const HEIGHT: u32 = 1024;
+    const HEIGHT: u32 = 768;
 
     let window = video_subsystem
         .window("FFT", WIDTH, HEIGHT)
@@ -156,8 +156,8 @@ fn main() {
                 canvas.set_scale(scale, scale).unwrap();
                 for (n, (y1, y2)) in data.iter().zip(data.iter().skip(1)).enumerate()  {
                     if y1 > &0.0 || y2 > &0.0 {
-                        let y1 = HEIGHT as f32 / scale - (y1 * 50.0 / scale);
-                        let y2 = HEIGHT as f32 / scale - (y2 * 50.0 / scale);
+                        let y1 = HEIGHT as f32 / scale - (y1 * 0.2 * HEIGHT as f32 / scale);
+                        let y2 = HEIGHT as f32 / scale - (y2 * 0.2 * HEIGHT as f32 / scale);
 
                         let x1 = (n as f32) * (WIDTH as f32 / scale) / (WINDOW as f32 / 2.0);
                         let x2 = ((n+1) as f32) * (WIDTH as f32 / scale) / (WINDOW as f32 / 2.0);
