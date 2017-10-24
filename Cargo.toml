@@ -5,3 +5,4 @@ authors = ["Raphael Nestler <raphael.nestler@gmail.com>"]
 
 [dependencies]
 sdl2 = { git = "https://github.com/Rust-SDL2/rust-sdl2.git" }
+stft = "*"
