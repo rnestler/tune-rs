@@ -5,5 +5,7 @@ jobs:
       - image: rust:latest
     steps:
       - checkout
+      - run: apt update -y
+      - run: apt-get -y install libsdl2-dev
       - run: cargo build
       - run: cargo test
