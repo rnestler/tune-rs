@@ -1,3 +1,4 @@
+[![CircleCI Build Status](https://img.shields.io/circleci/project/github/rnestler/tune-rs/master.svg)](https://circleci.com/gh/rnestler/tune-rs)
 # tune-rs
 
 An instrument tuner written in Rust.
