@@ -9,7 +9,7 @@ Currently it just displays the DFT of the microphone.
 
 You'll need to install libsdl2 first:
 
-```
+```Bash
 # Ubuntu / Debian
 sudo apt install libsdl2-dev
 # ArchLinux
