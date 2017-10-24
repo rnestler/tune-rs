@@ -4,3 +4,14 @@
 An instrument tuner written in Rust.
 
 Currently it just displays the DFT of the microphone.
+
+## Build
+
+You'll need to install libsdl2 first:
+
+```
+# Ubuntu / Debian
+sudo apt install libsdl2-dev
+# ArchLinux
+sudo pacman -S sdl2
+```
