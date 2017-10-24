@@ -1,10 +1,10 @@
 extern crate sdl2;
 extern crate stft;
 
-use std::thread::sleep;
-use std::time::Duration;
-
 use sdl2::audio::{AudioCallback, AudioSpecDesired};
+use sdl2::pixels::Color;
+use sdl2::keyboard::Keycode;
+use sdl2::event::Event;
 
 use stft::{STFT, WindowType};
 
@@ -59,6 +59,24 @@ impl AudioCallback for Printer {
 fn main() {
     let sdl_context = sdl2::init().unwrap();
     let audio_subsystem = sdl_context.audio().unwrap();
+    let video_subsystem = sdl_context.video().unwrap();
+
+    let window = video_subsystem
+        .window("FFT", 800, 600)
+        .position_centered()
+        .build()
+        .unwrap();
+
+    let mut canvas = window.into_canvas()
+        .target_texture()
+        .present_vsync()
+        .build()
+        .unwrap();
+
+    canvas.set_draw_color(Color::RGB(0, 0, 0));
+
+    canvas.clear();
+    canvas.present();
 
     let desired_spec = AudioSpecDesired {
         freq: Some(44100),
@@ -73,5 +91,19 @@ fn main() {
 
     device.resume();
 
-    sleep(Duration::from_secs(2));
+    let mut event_pump = sdl_context.event_pump().unwrap();
+    'running: loop {
+        for event in event_pump.poll_iter() {
+            match event {
+                Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
+                    break 'running
+                },
+                _ =>  {}
+            }
+            canvas.set_draw_color(Color::RGB(0, 0, 0));
+            canvas.clear();
+
+            canvas.present();
+        }
+    }
 }
