@@ -15,3 +15,7 @@ sudo apt install libsdl2-dev
 # ArchLinux
 sudo pacman -S sdl2
 ```
+
+## Screenshot
+
+![Screenshot](screenshot.png)
